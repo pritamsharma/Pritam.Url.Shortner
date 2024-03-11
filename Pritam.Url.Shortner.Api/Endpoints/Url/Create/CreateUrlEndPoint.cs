@@ -1,5 +1,6 @@
 ﻿using HashidsNet;
 using Pritam.Url.Shortner.Application.Interface;
+using OriginalUrl = Pritam.Url.Shortner.Domain.Entities.Url;
 
 namespace Pritam.Url.Shortner.Api.Endpoint.Url.Create
 {
@@ -27,7 +28,7 @@ namespace Pritam.Url.Shortner.Api.Endpoint.Url.Create
                 ThrowError("Request can not be null.", 400);
             }
 
-            var url = new Domain.Entities.Url { OriginalUrl = request.Url };
+            var url = new OriginalUrl { OriginalUrl = request.Url };
 
             _dbContext.Urls.Add(url);
             _ = await _dbContext.SaveChangesAsync(ct);

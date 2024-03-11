@@ -1,14 +1,17 @@
 ﻿using HashidsNet;
 using Pritam.Url.Shortner.Application.Interface;
+using InMemory.Cache.Interface;
 
 namespace Pritam.Url.Shortner.Api.Endpoint.Url.Redirect
 {
 
     public class RedirectUrlEndPoint : BaseEndPoint<RedirectUrlRequest>
     {
+        protected ICacheAdapter _cache;
 
-        public RedirectUrlEndPoint(IAppDbContext dbContext, IHashids hashids) : base(dbContext, hashids)
+        public RedirectUrlEndPoint(IAppDbContext dbContext, IHashids hashids, ICacheAdapter cache) : base(dbContext, hashids)
         {
+            _cache = cache;
         }
 
         public override void Configure()
@@ -27,16 +30,29 @@ namespace Pritam.Url.Shortner.Api.Endpoint.Url.Redirect
                 ThrowError("Request can not be null.", 400);
             }
 
-            var urlId = _hashids.DecodeSingle(request.Id);
+            var isFromCache = false;
+            var originalUrl = await _cache.GetAsync<string>(request.Id);
+            if (string.IsNullOrEmpty(originalUrl))
+            {
+                var url = await _dbContext.Urls.FindAsync(_hashids.DecodeSingle(request.Id), ct);
+                originalUrl = url != null ? url.OriginalUrl : string.Empty;
+            }
+            else 
+            {
+                isFromCache = true;
+            }
 
-            var url = await _dbContext.Urls.FindAsync(urlId);
-
-            if (url == null || !Uri.IsWellFormedUriString(url.OriginalUrl, UriKind.Absolute))
+            if (!Uri.IsWellFormedUriString(originalUrl, UriKind.Absolute))
             {
                 ThrowError("Url is not well formed.", 400);
             }
 
-            await SendRedirectAsync(url.OriginalUrl, true, true);
+            if (!isFromCache)
+            {
+                _ = await _cache.SetAsync(request.Id, originalUrl);
+            }
+            
+            await SendRedirectAsync(originalUrl, true, true);
         }
     }
 }

@@ -7,17 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EnyimMemcachedCore" Version="3.2.0" />
     <PackageReference Include="FastEndpoints" Version="5.23.0" />
     <PackageReference Include="FastEndpoints.Security" Version="5.23.0" />
     <PackageReference Include="FluentValidation" Version="11.9.0" />
     <PackageReference Include="Hashids.net" Version="1.7.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Pritam.Cache.Interface" Version="1.1.0" />
+    <PackageReference Include="Pritam.Cache.Memcached" Version="1.1.0" />
+    <PackageReference Include="Pritam.Cache.Redis" Version="1.2.0" />
+    <PackageReference Include="StackExchange.Redis" Version="2.7.33" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.4.0" />
   </ItemGroup>
 
   <ItemGroup>
