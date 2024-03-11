@@ -1,0 +1,37 @@
+{
+	"info": {
+		"_postman_id": "d5ab9ccf-050f-4f86-954f-c65f8cd40413",
+		"name": "URL Shortner",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "33370699"
+	},
+	"item": [
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"url\": \"https://github.com/pritamsharma\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://localhost:7145/url/"
+			},
+			"response": []
+		},
+		{
+			"name": "Redirect",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://localhost:7145/url/yWk0Ao"
+			},
+			"response": []
+		}
+	]
+}

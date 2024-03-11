@@ -1,0 +1,11 @@
+﻿/.vs
+*.user
+/Pritam.Url.Shortner.Infrastructure/bin
+/Pritam.Url.Shortner.Infrastructure/obj
+/Pritam.Url.Shortner.Api/bin
+/Pritam.Url.Shortner.Api/obj
+/Pritam.Url.Shortner.Application/bin
+/Pritam.Url.Shortner.Application/obj
+/Pritam.Url.Shortner.Domain/bin
+/Pritam.Url.Shortner.Domain/obj
+
