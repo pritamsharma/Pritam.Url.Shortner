@@ -7,9 +7,11 @@ namespace Pritam.Url.Shortner.Api.Endpoint.Url.Create
 
     public class CreateUrlEndPoint : BaseEndPoint<CreateUrlRequest, CreateUrlResponse>
     {
+        protected IUrlCommand _urlCommand;
 
-        public CreateUrlEndPoint(IAppDbContext dbContext, IHashids hashids) : base(dbContext, hashids)
+        public CreateUrlEndPoint(IAppDbContext dbContext, IHashids hashids, IUrlCommand urlCommand) : base(dbContext, hashids)
         {
+            _urlCommand = urlCommand;
         }
 
         public override void Configure()
@@ -23,17 +25,9 @@ namespace Pritam.Url.Shortner.Api.Endpoint.Url.Create
 
         public override async Task HandleAsync(CreateUrlRequest request, CancellationToken ct)
         {
-            if (request == null)
-            {
-                ThrowError("Request can not be null.", 400);
-            }
+            var id = await _urlCommand.CreateUrl(new OriginalUrl { OriginalUrl = request.Url }, ct);
 
-            var url = new OriginalUrl { OriginalUrl = request.Url };
-
-            _dbContext.Urls.Add(url);
-            _ = await _dbContext.SaveChangesAsync(ct);
-
-            await SendAsync(new CreateUrlResponse { Id = _hashids.Encode(url.Id) });
+            await SendAsync(new CreateUrlResponse { Id = id });
         }
     }
 }

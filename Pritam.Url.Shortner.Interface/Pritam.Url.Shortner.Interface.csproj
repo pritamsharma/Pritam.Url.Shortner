@@ -7,16 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Hashids.net" Version="1.7.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.2" />
-    <PackageReference Include="Pritam.Cache.Interface" Version="1.1.0" />
-    <PackageReference Include="Pritam.Cache.Memcached" Version="1.1.0" />
-    <PackageReference Include="Pritam.Cache.Redis" Version="1.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Pritam.Url.Shortner.Domain\Pritam.Url.Shortner.Domain.csproj" />
-    <ProjectReference Include="..\Pritam.Url.Shortner.Interface\Pritam.Url.Shortner.Interface.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,5 @@
 ﻿using FastEndpoints;
 using HashidsNet;
-using InMemory.Cache.Interface;
 //using InMemory.Cache.Redis;
 using InMemory.Cache.Memcached;
 

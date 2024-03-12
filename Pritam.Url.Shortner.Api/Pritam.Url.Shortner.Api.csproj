@@ -28,6 +28,7 @@
     <ProjectReference Include="..\Pritam.Url.Shortner.Application\Pritam.Url.Shortner.Application.csproj" />
     <ProjectReference Include="..\Pritam.Url.Shortner.Domain\Pritam.Url.Shortner.Domain.csproj" />
     <ProjectReference Include="..\Pritam.Url.Shortner.Infrastructure\Pritam.Url.Shortner.Infrastructure.csproj" />
+    <ProjectReference Include="..\Pritam.Url.Shortner.Interface\Pritam.Url.Shortner.Interface.csproj" />
   </ItemGroup>
 
 </Project>
