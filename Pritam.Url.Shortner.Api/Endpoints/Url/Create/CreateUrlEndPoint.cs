@@ -1,5 +1,4 @@
-﻿using HashidsNet;
-using Pritam.Url.Shortner.Application.Interface;
+﻿using Pritam.Url.Shortner.Application.Interface;
 using OriginalUrl = Pritam.Url.Shortner.Domain.Entities.Url;
 
 namespace Pritam.Url.Shortner.Api.Endpoint.Url.Create
@@ -7,11 +6,8 @@ namespace Pritam.Url.Shortner.Api.Endpoint.Url.Create
 
     public class CreateUrlEndPoint : BaseEndPoint<CreateUrlRequest, CreateUrlResponse>
     {
-        protected IUrlCommand _urlCommand;
-
-        public CreateUrlEndPoint(IAppDbContext dbContext, IHashids hashids, IUrlCommand urlCommand) : base(dbContext, hashids)
+        public CreateUrlEndPoint(IUrlCommand urlCommand) : base(urlCommand)
         {
-            _urlCommand = urlCommand;
         }
 
         public override void Configure()

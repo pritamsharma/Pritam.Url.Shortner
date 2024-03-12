@@ -1,7 +1,5 @@
 ﻿using HashidsNet;
 using InMemory.Cache.Interface;
-using InMemory.Cache.Memcached;
-using Microsoft.Extensions.Configuration;
 using Pritam.Url.Shortner.Application.Interface;
 using Pritam.Url.Shortner.Application.Url;
 
@@ -9,7 +7,7 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ConfigureService
     {
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddScoped<IUrlCommand>(provider =>
             {

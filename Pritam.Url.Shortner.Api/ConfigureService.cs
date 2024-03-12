@@ -1,7 +1,7 @@
 ﻿using FastEndpoints;
 using HashidsNet;
-//using InMemory.Cache.Redis;
-using InMemory.Cache.Memcached;
+using InMemory.Cache.Redis;
+//using InMemory.Cache.Memcached;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -9,16 +9,16 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static IServiceCollection AddApiServices(this IServiceCollection services, IConfiguration configuration)
         {
-            /*services.AddSingleton(
+            services.AddSingleton(
                 new RedisAdapterFactory(
                     configuration: configuration["Redis:Connection"] ?? string.Empty,
-                    expiryTimeSeconds: Convert.ToInt32(configuration["Redis:ExpiryTime"])).CreateCacheAdapter());*/
+                    expiryTimeSeconds: Convert.ToInt32(configuration["Redis:ExpiryTime"])).CreateCacheAdapter());
 
-            services.AddSingleton(
+            /*services.AddSingleton(
                 new MemcachedAdapterFactory(
                     address: configuration["Memcached:Address"] ?? string.Empty,
                     port: Convert.ToInt32(configuration["Memcached:Port"] ?? string.Empty),
-                    expiryTimeSeconds: Convert.ToInt32(configuration["Memcached:ExpiryTime"])).CreateCacheAdapter());
+                    expiryTimeSeconds: Convert.ToInt32(configuration["Memcached:ExpiryTime"])).CreateCacheAdapter());*/
 
             services.AddSingleton<IHashids>(
                 new Hashids(

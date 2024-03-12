@@ -1,5 +1,4 @@
 ﻿using FastEndpoints;
-using HashidsNet;
 using Pritam.Url.Shortner.Application.Interface;
 
 namespace Pritam.Url.Shortner.Api.Endpoint
@@ -8,13 +7,11 @@ namespace Pritam.Url.Shortner.Api.Endpoint
         where TRequest : notnull, new()
         where TResponse : notnull, new()
     {
-        protected IAppDbContext _dbContext;
-        protected IHashids _hashids;
+        protected IUrlCommand _urlCommand;
 
-        protected BaseEndPoint(IAppDbContext dbContext, IHashids hashids)
+        protected BaseEndPoint(IUrlCommand urlCommand)
         {
-            _dbContext = dbContext;
-            _hashids = hashids;
+            _urlCommand = urlCommand;
         }
 
         public override void Configure()
@@ -26,13 +23,11 @@ namespace Pritam.Url.Shortner.Api.Endpoint
     public abstract class BaseEndPoint<TRequest> : Endpoint<TRequest>
         where TRequest : notnull, new()
     {
-        protected IAppDbContext _dbContext;
-        protected IHashids _hashids;
+        protected IUrlCommand _urlCommand;
 
-        protected BaseEndPoint(IAppDbContext dbContext, IHashids hashids)
+        protected BaseEndPoint(IUrlCommand urlCommand)
         {
-            _dbContext = dbContext;
-            _hashids = hashids;
+            _urlCommand = urlCommand;
         }
 
         public override void Configure()
