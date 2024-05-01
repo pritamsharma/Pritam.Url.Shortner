@@ -15,6 +15,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseFastEndpoints();
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.Run();

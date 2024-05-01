@@ -1,0 +1,7 @@
+version: "3.3"
+services:
+  api:
+    image: url-shortner:latest
+    ports:
+      - 7145:8080
+    container_name: UrlShortner

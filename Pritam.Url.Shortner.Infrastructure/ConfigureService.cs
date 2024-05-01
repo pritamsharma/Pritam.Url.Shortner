@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Rhenus.Game.Infrastructure.Persistance;
+using Pritam.Url.Shortner.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Pritam.Url.Shortner.Application.Interface;
 

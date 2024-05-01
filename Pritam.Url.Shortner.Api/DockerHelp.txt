@@ -1,0 +1,11 @@
+# Building the Image
+* docker build -t url-shortner -f Pritam.Url.Shortner.Api\Dockerfile .
+
+#Creating Container via command line
+* docker run -p 7145:8080 --name UrlShortner url-shortner
+
+Create and Start Docker Containers
+* docker-compose -f Pritam.Url.Shortner.Api\docker-compose.yaml up -d
+
+Stop and Delete Docker Containers
+* docker-compose -f Pritam.Url.Shortner.Api\docker-compose.yaml down
