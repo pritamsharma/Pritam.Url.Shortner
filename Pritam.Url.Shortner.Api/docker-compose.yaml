@@ -1,7 +1,26 @@
 version: "3.3"
+name: UrlShortner
 services:
-  api:
+  urlShortnerApi:
     image: url-shortner:latest
+    container_name: urlShortnerApi
+    restart: always
     ports:
       - 7145:8080
-    container_name: UrlShortner
+    depends_on:
+      urlShortnerRedis:
+        condition: service_started
+    
+  urlShortnerRedis:
+    image: redis:7.2.4-alpine
+    container_name: urlShortnerRedis
+    restart: always
+    volumes:
+      - redis_volume_data:/data
+    ports:
+      - 6000:6379
+    expose:
+      - 6379
+
+volumes:
+  redis_volume_data:
